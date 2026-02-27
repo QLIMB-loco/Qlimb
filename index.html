@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Qlimb: A robust controller for quadrupedal mobile manipulation using Unitree Go2 and ARX X5.">
+  <meta name="keywords" content="Robotics, Reinforcement Learning, Quadruped, Mobile Manipulation, RAL">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qlimb: Quadruped Manipulator Project</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .video-container {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+    .video-caption {
+      font-weight: 600;
+      margin-top: 5px;
+      color: #4a4a4a;
+    }
+    /* 调整视频部分上下间距 */
+    .section-video {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Qlimb: Robust Quadrupedal Mobile Manipulation <br> via Reinforcement Learning</h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors<sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Submitted to IEEE Robotics and Automation Letters (RAL)</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (Under Review)</span>
+                </a>
+              </span>
+              
+              <span class="link-block">
+                <a href="#teaser" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="video-container">
+        <video id="teaser" autoplay muted loop playsinline width="100%">
+          <source src="./static/videos/20up-mani-40down.mp4" type="video/mp4">
+        </video>
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
+        <span class="dnerf">Qlimb</span> enables the <strong>Unitree Go2</strong> equipped with an <strong>ARX X5</strong> arm to perform complex manipulation tasks in rough terrain.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Equipping quadruped robots with manipulators
+            significantly expands their operational workspace. However,
+            for small-scale systems constrained by limited joint torques,
+            achieving robust whole-body control on unstructured terrains
+            remains a substantial challenge. Existing learning-based methods
+            often face an inherent trade-off between locomotion stability and
+            manipulation dexterity: traversing rough terrains introduces
+            continuous base perturbations that constantly disturb state observations, significantly disrupting precise manipulation learning,
+            whereas training exclusively on flat ground fails to yield robust
+            locomotion skills for unstructured environments. To address
+            these challenges, we propose Qlimb, a novel end-to-end whole body control framework tailored for small-scale quadruped
+            manipulators. We introduce a latent belief mixing mechanism
+            that adaptively fuses mode-specific state representations to decouple state estimation for agile locomotion and stable manipulation
+            within a unified policy, enabling seamless transitions between
+            mobility and interaction modes. Furthermore, the policy exhibits
+            emergent leg-arm coordination, ensuring smooth postural
+            adaptations and intrinsic self-balancing during manipulation.
+            Extensive real-world experiments demonstrate that QLIMB
+            enables small-scale quadruped manipulators to achieve robust
+            locomotion and stable manipulation on challenging terrains.
+          </p>
+          <p>
+            Our method leverages <strong>Reinforcement Learning (RL)</strong> trained in Isaac Lab to robustly control a Unitree Go2 robot mounted with an ARX X5 arm.
+            We introduce a unified policy that handles both locomotion and manipulation simultaneously, demonstrating superior performance compared to decoupled baselines.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">System Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our framework consists of a high-level planner and a low-level whole-body controller trained via Proximal Policy Optimization (PPO).
+          </p>
+          <img src="./static/images/photo_02.pdf" alt="System Pipeline" style="width:100%; border-radius: 10px; margin-bottom: 20px;">
+          <p>
+            The training is conducted in <strong>Isaac Lab</strong>, simulating various terrain properties and disturbances to ensure robust Sim-to-Real transfer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-video is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Indoor Loco-Manipulation Tests</h2>
+    
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="indoor-1" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/elevator-v1-web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Test Case 1</p>
+      </div>
+
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="indoor-2" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/yalin_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Test Case 2</p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="indoor-3" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/25cm_pick_up_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Test Case 3</p>
+      </div>
+
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="indoor-4" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/stair_milk_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Test Case 4</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-video is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Outdoor Loco-Manipulation Tests</h2>
+    
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="steve" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/stress_test_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Door Opening</p>
+      </div>
+
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="chair-tp" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/stone_cup_success_v0_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Dynamic Grasping</p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="shiba" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/tree_ball_v0_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Rough Terrain Navigation</p>
+      </div>
+
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="fullbody" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/ball_grass_both_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Object Transport</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-video is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Agile Locomotion in diverse Terrains</h2>
+    
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="loco-1" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/stair_indoor_up_down_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Terrain Type 1</p>
+      </div>
+
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="loco-2" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/25cm_stairs_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Terrain Type 2</p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="loco-3" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/stair_slope_jump_v0_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Terrain Type 3</p>
+      </div>
+
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="loco-4" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/stair_outdoor_up_down_web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Terrain Type 4</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- <section class="section section-video">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Real-world Experiments</h2>
+    
+    <div class="columns is-centered">
+      
+      <div class="column is-half">
+        <h3 class="title is-4 has-text-centered">Robustness Test</h3>
+        <div class="content has-text-justified is-size-6">
+          <p>
+            Maintaining stability with heavy payloads under external perturbations.
+          </p>
+        </div>
+        <div class="video-container">
+          <video id="replay-video" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/robustness_test.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <h3 class="title is-4 has-text-centered">Precise Manipulation</h3>
+        <div class="content has-text-justified is-size-6">
+          <p>
+            ARX X5 arm performing precise end-effector control tasks.
+          </p>
+        </div>
+        <div class="video-container">
+          <video id="replay-video-2" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/manipulation_test.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{qlimb2026,
+  author    = {Anonymous Authors},
+  title     = {Qlimb: End-to-End Whole-Body Control for Quadruped Loco-Manipulation and Balance on Complex Terrains},
+  journal   = {Under Review at IEEE RAL},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="#" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website template from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
