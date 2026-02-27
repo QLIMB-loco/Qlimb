@@ -145,7 +145,10 @@
             whereas training exclusively on flat ground fails to yield robust
             locomotion skills for unstructured environments. To address
             these challenges, we propose Qlimb, a novel end-to-end whole body control framework tailored for small-scale quadruped
-            manipulators. We introduce a latent belief mixing mechanism
+            manipulators.
+          </p>
+          <p>
+            We introduce a latent belief mixing mechanism
             that adaptively fuses mode-specific state representations to decouple state estimation for agile locomotion and stable manipulation
             within a unified policy, enabling seamless transitions between
             mobility and interaction modes. Furthermore, the policy exhibits
@@ -154,10 +157,6 @@
             Extensive real-world experiments demonstrate that QLIMB
             enables small-scale quadruped manipulators to achieve robust
             locomotion and stable manipulation on challenging terrains.
-          </p>
-          <p>
-            Our method leverages <strong>Reinforcement Learning (RL)</strong> trained in Isaac Lab to robustly control a Unitree Go2 robot mounted with an ARX X5 arm.
-            We introduce a unified policy that handles both locomotion and manipulation simultaneously, demonstrating superior performance compared to decoupled baselines.
           </p>
         </div>
       </div>
@@ -172,9 +171,9 @@
         <h2 class="title is-3 has-text-centered">System Overview</h2>
         <div class="content has-text-justified">
           <p>
-            Our framework consists of a high-level planner and a low-level whole-body controller trained via Proximal Policy Optimization (PPO).
+            We present QLIMB, a single-stage, end-to-end RL framework designed to enable robust loco-manipulation.
           </p>
-          <img src="./static/images/photo_02.pdf" alt="System Pipeline" style="width:100%; border-radius: 10px; margin-bottom: 20px;">
+          <img src="./static/images/pipline.jpg" alt="System Pipeline" style="width:100%; border-radius: 10px; margin-bottom: 20px;">
           <p>
             The training is conducted in <strong>Isaac Lab</strong>, simulating various terrain properties and disturbances to ensure robust Sim-to-Real transfer.
           </p>
@@ -239,7 +238,7 @@
       <div class="column is-half">
         <div class="video-container">
           <video poster="" id="steve" autoplay muted loop playsinline width="100%">
-            <source src="./static/videos/stress_test_web.mp4" type="video/mp4">
+            <source src="./static/videos/slope_grass_web.mp4" type="video/mp4">
           </video>
         </div>
         <p class="has-text-centered video-caption">Door Opening</p>
@@ -286,7 +285,7 @@
       <div class="column is-half">
         <div class="video-container">
           <video poster="" id="loco-1" autoplay muted loop playsinline width="100%">
-            <source src="./static/videos/stair_indoor_up_down_web.mp4" type="video/mp4">
+            <source src="./static/videos/stair_Indoor_up_down_web.mp4" type="video/mp4">
           </video>
         </div>
         <p class="has-text-centered video-caption">Terrain Type 1</p>
