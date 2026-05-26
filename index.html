@@ -43,9 +43,115 @@
       padding-top: 1rem;
       padding-bottom: 1rem;
     }
+
+    /* Smooth page scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section[id] {
+      scroll-margin-top: 80px;
+    }
+
+    /* Left section navigation */
+    .side-nav {
+      position: fixed;
+      top: 50%;
+      left: 24px;
+      transform: translateY(-50%);
+      z-index: 1000;
+      width: 180px;
+      padding: 14px 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .side-nav-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #363636;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .side-nav a {
+      display: block;
+      padding: 6px 8px;
+      margin: 2px 0;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      line-height: 1.25;
+      color: #6b7280;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .side-nav a:hover {
+      color: #363636;
+      background: #f5f5f5;
+    }
+
+    .side-nav a.active {
+      color: #111827;
+      background: #eef2ff;
+      font-weight: 700;
+    }
+
+    .training-figure {
+      width: 100%;
+      padding: 1rem;
+      margin: 1.2rem 0 1.4rem;
+      border-radius: 10px;
+      background: #f8f8f8;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .training-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .training-image-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .training-image-card {
+      border-radius: 8px;
+      background: white;
+      border: 1px solid #ececec;
+      overflow: hidden;
+    }
+
+    .training-image-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .side-nav {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+
+<aside class="side-nav" aria-label="Section navigation">
+  <div class="side-nav-title">QLIMB</div>
+  <a href="#abstract" class="side-nav-link">Abstract</a>
+  <a href="#system-overview" class="side-nav-link">System Overview</a>
+  <a href="#training-details" class="side-nav-link">Training Details</a>
+  <a href="#indoor-tests" class="side-nav-link">Indoor Tests</a>
+  <a href="#outdoor-tests" class="side-nav-link">Outdoor Tests</a>
+  <a href="#agile-locomotion" class="side-nav-link">Agile Locomotion</a>
+  <a href="#BibTeX" class="side-nav-link">BibTeX</a>
+</aside>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
@@ -127,7 +233,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="abstract">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -164,7 +270,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="system-overview">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -183,7 +289,33 @@
   </div>
 </section>
 
-<section class="section section-video is-light">
+<section class="section" id="training-details">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Training Details</h2>
+        <div class="content has-text-justified">
+          <p>
+            QLIMB uses terrain curriculum training and carefully designed reward terms to learn robust locomotion-manipulation transitions in Isaac Lab.
+          </p>
+
+          <div class="training-figure">
+            <div class="training-image-grid">
+              <div class="training-image-card">
+                <img src="./static/images/terrain_details.jpg" alt="Training terrain curriculum and environment layout">
+              </div>
+              <div class="training-image-card">
+                <img src="./static/images/reward.jpg" alt="Reward design for QLIMB training">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-video is-light" id="indoor-tests">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Indoor Loco-Manipulation Tests</h2>
     
@@ -227,10 +359,32 @@
       </div>
     </div>
 
+    <div class="columns is-centered">
+  <div class="column is-half">
+    <div class="video-container">
+      <video poster="" id="indoor-5" autoplay muted loop playsinline width="100%">
+        <source src="./static/videos/rebut-indoor-v0.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p class="has-text-centered video-caption">Test Case 5</p>
+  </div>
+
+  <div class="column is-half">
+    <div class="video-container">
+      <video poster="" id="indoor-6" autoplay muted loop playsinline width="100%">
+        <source src="./static/videos/rebut-indoor-v1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p class="has-text-centered video-caption">Test Case 6</p>
+  </div>
+</div>
+
   </div>
 </section>
 
-<section class="section section-video is-light">
+<section class="section section-video is-light" id="outdoor-tests">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Outdoor Loco-Manipulation Tests</h2>
     
@@ -297,7 +451,7 @@
   </div>
 </section>
 
-<section class="section section-video is-light">
+<section class="section section-video is-light" id="agile-locomotion">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Agile Locomotion in diverse Terrains</h2>
     
@@ -338,6 +492,26 @@
           </video>
         </div>
         <p class="has-text-centered video-caption">Test Case 4</p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="loco-5" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/rebut-indoorl-loco-v0.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Test Case 5</p>
+      </div>
+
+      <div class="column is-half">
+        <div class="video-container">
+          <video poster="" id="loco-6" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/rebut-indoorl-loco-v1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="has-text-centered video-caption">Test Case 6</p>
       </div>
     </div>
 
@@ -418,6 +592,40 @@
     </div>
   </div>
 </footer>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    /* Side navigation active-state tracking */
+    const sideLinks = document.querySelectorAll(".side-nav-link");
+    const pageSections = Array.from(sideLinks)
+      .map(link => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    function setActiveSideLink(activeLink) {
+      sideLinks.forEach(link => link.classList.remove("active"));
+      if (activeLink) activeLink.classList.add("active");
+    }
+
+    const sectionObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const activeLink = document.querySelector(`.side-nav-link[href="#${entry.target.id}"]`);
+            setActiveSideLink(activeLink);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: 0
+      }
+    );
+
+    pageSections.forEach(section => sectionObserver.observe(section));
+  });
+</script>
 
 </body>
 </html>
