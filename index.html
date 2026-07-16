@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Qlimb: End-to-End Whole-Body Control for Quadruped Loco-Manipulation and Balance on Complex Terrains.">
+        content="QLIMB: End-to-End Whole-Body Control for Quadruped Loco-Manipulation and Balance on Complex Terrains.">
   <meta name="keywords" content="Robotics, Reinforcement Learning, Quadruped, Mobile Manipulation, RAL">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Qlimb: Quadruped Manipulator Project</title>
+  <title>QLIMB: Quadruped Manipulator Project</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -133,6 +133,30 @@
       height: auto;
     }
 
+    .publication-status {
+      margin: 0.7rem auto 1.1rem;
+      color: #555;
+      font-weight: 700;
+    }
+
+    .author-note,
+    .affiliation-line {
+      margin-top: 0.35rem;
+      color: #4a4a4a;
+      font-size: 1rem;
+    }
+
+    .institution-logos {
+      max-width: 760px;
+      margin: 1.1rem auto 0.6rem;
+    }
+
+    .institution-logo-banner {
+      display: block;
+      width: min(100%, 620px);
+      margin: 0 auto;
+    }
+
     @media screen and (max-width: 1200px) {
       .side-nav {
         display: none;
@@ -178,22 +202,43 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Qlimb: End-to-End Whole-Body Control for Quadruped Loco-Manipulation and Balance on Complex Terrains</h1>
+          <h1 class="title is-1 publication-title">QLIMB: End-to-End Whole-Body Control for Quadruped Loco-Manipulation and Balance on Complex Terrains</h1>
           
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Anonymous Authors<sup>1</sup></span>
+            <span class="author-block">Quancheng Qian<sup>1</sup></span>
+            <span class="author-block">Peng Zhai<sup>&dagger;,1</sup></span>
+            <span class="author-block">Zonghao Zhang<sup>1</sup></span>
+            <span class="author-block">Long Yang<sup>1</sup></span>
+            <span class="author-block">Yujie Xiong<sup>1</sup></span>
+            <span class="author-block">Yuqi Li<sup>1</sup></span>
+            <span class="author-block">Yueqi Zhang<sup>1</sup></span>
+            <span class="author-block">Kangmai Hu<sup>1</sup></span>
+            <span class="author-block">Mingyu Liu<sup>1</sup></span>
+            <span class="author-block">Lihua Zhang<sup>&dagger;,1</sup></span>
           </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Submitted to IEEE Robotics and Automation Letters (RAL)</span>
+          <div class="publication-status">
+            IEEE Robotics and Automation Letters, accepted June 2026
+          </div>
+
+          <div class="affiliation-line">
+            <sup>1</sup>College of Intelligent Robotics and Advanced Manufacturing, Fudan University, China
+          </div>
+
+          <div class="author-note">
+            <sup>&dagger;</sup>Corresponding authors
+          </div>
+
+          <div class="institution-logos" aria-label="Fudan University and College of Intelligent Robotics and Advanced Manufacturing logos">
+            <img class="institution-logo-banner" src="./static/images/fdu_icon.png" alt="Fudan University and College of Intelligent Robotics and Advanced Manufacturing logo banner">
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://doi.org/10.1109/LRA.2026.3712638" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper (Under Review)</span>
+                  <span>Paper</span>
                 </a>
               </span>
               
@@ -227,7 +272,7 @@
         </video>
       </div>
       <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
-        <span class="dnerf">Qlimb</span> enables the <strong>Unitree Go2</strong> equipped with an <strong>ARX X5</strong> arm to perform complex manipulation tasks in rough terrain.
+        <span class="dnerf">QLIMB</span> enables the <strong>Unitree Go2</strong> equipped with an <strong>ARX X5</strong> arm to perform complex manipulation tasks in rough terrain.
       </h2>
     </div>
   </div>
@@ -250,7 +295,7 @@
             continuous base perturbations that constantly disturb state observations, significantly disrupting precise manipulation learning,
             whereas training exclusively on flat ground fails to yield robust
             locomotion skills for unstructured environments. To address
-            these challenges, we propose Qlimb, a novel end-to-end whole body control framework tailored for small-scale quadruped
+            these challenges, we propose QLIMB, a novel end-to-end whole body control framework tailored for small-scale quadruped
             manipulators.
           </p>
           <p>
@@ -560,11 +605,14 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{qlimb2026,
-  author    = {Anonymous Authors},
-  title     = {Qlimb: End-to-End Whole-Body Control for Quadruped Loco-Manipulation and Balance on Complex Terrains},
-  journal   = {Under Review at IEEE RAL},
+    <pre><code>@ARTICLE{qian2026qlimb,
+  author    = {Qian, Quancheng and Zhai, Peng and Zhang, Zonghao and Yang, Long and Xiong, Yujie and Li, Yuqi and Zhang, Yueqi and Hu, Kangmai and Liu, Mingyu and Zhang, Lihua},
+  journal   = {IEEE Robotics and Automation Letters},
+  title     = {QLIMB: End-to-End Whole-Body Control for Quadruped Loco-Manipulation and Balance on Complex Terrains},
   year      = {2026},
+  pages     = {1-8},
+  keywords  = {Legged Robots; Whole-Body Motion Planning and Control; Reinforcement Learning},
+  doi       = {10.1109/LRA.2026.3712638},
 }</code></pre>
   </div>
 </section>
